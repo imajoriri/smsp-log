@@ -17,10 +17,10 @@ exports.setup = function(options, seedLink) {
 
 exports.up = function(db) {
   db.createTable(tableName, {
-    id: {type: 'int', primaryKey: true},
-    name: 'string',
+    id: {type: 'int', primaryKey: true, autoIncrement: true},
+    name: {type: 'string', unique: true},
     description: 'string',
-    created_at: 'datetime',
+    created_at: { type: 'datetime', defaultValue: new String('CURRENT_TIMESTAMP')},
     deleted_at: 'datetime',
   });
   return null;

@@ -17,11 +17,11 @@ exports.setup = function(options, seedLink) {
 
 exports.up = function(db) {
   db.createTable(tableName, {
-    id: {type: 'int', primaryKey: true},
+    id: {type: 'int', primaryKey: true, autoIncrement: true},
     skill_id: {type: 'int', notNull: true},
-    skill_user_id: {type: 'int', notNull: false},
+    skill_user_id: {type: 'string', notNull: false},
     handler_name: {type: 'string'},
-    created_at: 'datetime',
+    created_at: { type: 'datetime', defaultValue: new String('CURRENT_TIMESTAMP')},
     deleted_at: 'datetime',
   });
   return null;
